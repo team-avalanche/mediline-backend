@@ -4,13 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["aahnik <daw@aahnik.dev>"]
 readme = "README.md"
-packages = [{include = "backend_api"}]
+packages = [{ include = "api" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.103.1"
 beanie = "^1.22.6"
-pydantic = {extras = ["email"], version = "^2.3.0"}
+pydantic = { extras = ["email"], version = "^2.3.0" }
 python-jose = "^3.3.0"
 python-decouple = "^3.8"
 passlib = "^1.7.4"
