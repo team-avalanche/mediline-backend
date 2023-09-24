@@ -6,6 +6,12 @@
   - Although we are not enforcing it.
 
 - For Python, the code style is enforced by `black`, `isort` and `ruff`.
+  - While you are coding you can run `./scripts/lint.sh`
+    - to run black, isort and ruff on your code.
+  - black and isort automatically formats your code.
+  - ruff will produce errors.
+    - You may need to manually fix them,
+    - or for some cases that can be autofixed with `ruff --fix .`
 
 - Learn about [pre-commit](https://pre-commit.com) and use it correctly.
   - We are using it to enforce code quality.
