@@ -1,7 +1,7 @@
 from datetime import date
 
 from beanie import Document, PydanticObjectId
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from api.utils.enum_types import AppointmentStatus
 
@@ -12,8 +12,10 @@ class AppointmentIn(BaseModel):
     time_slot: int
     purpose: str
 
+    class Settings:
+        bson_encoders = {date: str}
+
 
 class Appointment(AppointmentIn, Document):
-    id: PydanticObjectId = Field(alias="_id")
     patient_id: PydanticObjectId
     status: AppointmentStatus
