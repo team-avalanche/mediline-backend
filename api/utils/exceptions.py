@@ -1,5 +1,9 @@
 from fastapi import HTTPException, status
 
+user_not_active = HTTPException(
+    status_code=status.HTTP_400_BAD_REQUEST, detail="User Account is not activated."
+)
+
 doc_profile_not_found_exc = HTTPException(
     status_code=status.HTTP_404_NOT_FOUND, detail="Doctor Profile Not Found"
 )
