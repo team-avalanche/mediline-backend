@@ -9,7 +9,7 @@ test.py
 *.txt
 todo
 *.ipynb
-
+!env.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

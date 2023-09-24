@@ -25,7 +25,7 @@ Steps
 
     ```shell
     uvicorn api.main:app --reload --port 8080
-    # short-hand ./scripts/live.sh (type ./TAB-l-TAB)
+    # short-hand ./scripts/live.sh (type ./s-TAB-l-TAB)
     ```
 
 Alternatively, you can use `docker-compose` to spin up both the mongo-db server
