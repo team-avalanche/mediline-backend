@@ -1,16 +1,14 @@
 from datetime import date
 
 from beanie import Document, PydanticObjectId
-from pydantic import BaseModel, Field
+from pydantic import Field
 
-from api.utils.enum_types import Gender
+from api.models.profile import BaseProfile
 
 
-class PatientProfileIn(BaseModel):
-    gender: Gender | None = None
+class PatientProfileIn(BaseProfile):
     dob: date | None = None
-    contact: str | None = None
-    address: str | None = None
+    blood_group: str | None = None
 
 
 class PatientProfile(PatientProfileIn, Document):

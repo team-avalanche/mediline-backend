@@ -1,14 +1,12 @@
 from typing import Dict
 
 from beanie import Document, PydanticObjectId
-from pydantic import BaseModel, Field
+from pydantic import Field
 
-from api.utils.enum_types import Gender
+from api.models.profile import BaseProfile
 
 
-class DoctorProfileIn(BaseModel):
-    gender: Gender | None = None
-    contact: str | None = None
+class DoctorProfileIn(BaseProfile):
     hospital: str | None = None
     specialization: str | None = None
     clinic_address: str | None = None
