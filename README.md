@@ -15,13 +15,18 @@ Steps
 - git clone the repo
 - Move into the project dir, and run `poetry install`
 - Select apt virtual environment in VS Code.
+- Run a local instance of mongo-db using docker
+
+    ```shell
+    docker run --rm -p 27017:27017 mongo
+    ```
+
 - Make sure your virtual environment is activated
 
-```shell
-docker run --rm -p 27017:27017 mongo
-uvicorn api.main:app --reload --port 8080
-# short-hand ./scripts/live.sh (type ./TAB-l-TAB)
-```
+    ```shell
+    uvicorn api.main:app --reload --port 8080
+    # short-hand ./scripts/live.sh (type ./TAB-l-TAB)
+    ```
 
 Alternatively, you can use `docker-compose` to spin up both the mongo-db server
 and api server for you.
