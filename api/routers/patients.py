@@ -16,24 +16,25 @@ async def get_patient_self_profile(user: Patient) -> PatientProfile:
 
 
 @router.patch("/my-profile")
-async def update_patient_self_profile(profile_update: PatientProfileIn, user: Patient):
+async def update_patient_self_profile(
+    profile_update: PatientProfileIn, user: Patient
+) -> PydanticObjectId:
     patient = await PatientProfile.find_one(PatientProfile.id == user.id)
     if not patient:
         raise patient_profile_not_found_exc
-    patient = await patient.model_copy(
-        update=profile_update.model_dump(exclude_unset=True)
-    )
+    patient = patient.model_copy(update=profile_update.model_dump(exclude_unset=True))
     await patient.save()
 
     return patient.id
 
 
+@router.get("/patient-profile")
 async def get_patient_profile(
     patient_id: PydanticObjectId, user: Doctor
 ) -> PatientProfile:
     # privacy
     # a doctor who has atleast appointment with patient will be able to view his profile
-    aptmnts = Appointment.find_many(
+    aptmnts = await Appointment.find_many(
         Appointment.doctor_id == user.id,
         Appointment.status != AppointmentStatus.cancelled,
     )
