@@ -10,7 +10,7 @@ packages = [{ include = "api" }]
 python = "^3.11"
 fastapi = "^0.103.1"
 beanie = "^1.22.6"
-pydantic = { extras = ["email"], version = "^2.3.0" }
+pydantic = { extras = ["email"], version = "^2.1.0" }
 python-jose = "^3.3.0"
 python-decouple = "^3.8"
 passlib = "^1.7.4"
@@ -23,7 +23,15 @@ python-multipart = "^0.0.6"
 black = "^23.9.1"
 isort = "^5.12.0"
 ruff = "^0.0.291"
+pre-commit = "^3.4.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
