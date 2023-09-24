@@ -19,7 +19,6 @@ class UserAuth(BaseModel):
 class UserUpdate(BaseModel):
     # what comes in user update request
     email: EmailStr | None = None
-    username: str | None = None
 
 
 class UserOut(UserUpdate):
