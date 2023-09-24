@@ -1,20 +1,18 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, HTTPException, status
 
-from api.models.user import UserInDB, UserOut, UserUpdate
-from api.utils.current_user import get_current_active_user
+from api.models.user import UserOut, UserUpdate
+from api.utils.current_user import ActiveUser
 
 router = APIRouter(prefix="/user", tags=["User"])
 
 
-@router.get("", response_model=UserOut)
-async def get_user(user: UserInDB = Depends(get_current_active_user)):
+@router.get("")
+async def get_user(user: ActiveUser) -> UserOut:
     return user
 
 
-@router.patch("", response_model=UserOut)
-async def update_user(
-    update: UserUpdate, user: UserInDB = Depends(get_current_active_user)
-):
+@router.patch("")
+async def update_user(update: UserUpdate, user: ActiveUser) -> UserOut:
     user = user.model_copy(update=update.model_dump(exclude_unset=True))
     try:
         await user.save()
