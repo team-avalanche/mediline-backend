@@ -15,7 +15,7 @@ async def get_user(user: UserInDB = Depends(get_current_active_user)):
 async def update_user(
     update: UserUpdate, user: UserInDB = Depends(get_current_active_user)
 ):
-    user = user.copy(update=update.dict(exclude_unset=True))
+    user = user.model_copy(update=update.model_dump(exclude_unset=True))
     try:
         await user.save()
     except Exception as exc:
