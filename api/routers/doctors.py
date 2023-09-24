@@ -1,13 +1,12 @@
-from fastapi import APIRouter, HTTPException, Depends, Response, status
-from api.utils.enum_types import UserType
-from api.utils.current_user import GcauDep, Doctor
-from api.models.doctors import DoctorProfile, DoctorProfileIn, DoctorAvailability
-from api.utils.exceptions import (
-    doc_profile_not_found_exc,
-    doc_avlb_details_not_found_exc,
-)
 from beanie import PydanticObjectId
+from fastapi import APIRouter
 
+from api.models.doctors import DoctorAvailability, DoctorProfile, DoctorProfileIn
+from api.utils.current_user import Doctor, GcauDep
+from api.utils.exceptions import (
+    doc_avlb_details_not_found_exc,
+    doc_profile_not_found_exc,
+)
 
 router = APIRouter(prefix="/doctor", tags=["Doctors"])
 

@@ -1,7 +1,6 @@
 from decouple import config
 
 
-
 class Settings:
     mongo_uri = config("MONGO_URI")
     salt = config("SALT").encode()

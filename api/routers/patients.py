@@ -1,10 +1,8 @@
-from fastapi import APIRouter, HTTPException, Depends, Response, status
+from fastapi import APIRouter
 
 from api.models.patients import PatientProfile, PatientProfileIn
-from api.models.appointments import Appointment
-from api.utils.exceptions import patient_profile_not_found_exc
 from api.utils.current_user import Patient
-
+from api.utils.exceptions import patient_profile_not_found_exc
 
 router = APIRouter(prefix="/patient", tags=["Patients"])
 

@@ -1,12 +1,10 @@
-from fastapi import APIRouter, HTTPException, Depends, Response, status
-from api.models.user import UserInDB
+from beanie import PydanticObjectId
+from fastapi import APIRouter
+
 from api.models.appointments import Appointment, AppointmentIn
 from api.utils.current_user import GcauDep, Patient
-from api.utils.enum_types import UserType
+from api.utils.enum_types import AppointmentStatus, UserType
 from api.utils.exceptions import invalid_cancellation_request
-from pydantic import BaseModel
-from beanie import PydanticObjectId
-from api.utils.enum_types import AppointmentStatus
 
 router = APIRouter(prefix="/appointment", tags=["Appointments"])
 

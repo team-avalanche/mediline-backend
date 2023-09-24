@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 
 from api.config import CONFIG
-
 from api.models.user import UserInDB
 
 description = """
@@ -35,4 +34,3 @@ async def start_app():
     client = AsyncIOMotorClient(CONFIG.mongo_uri)
     db = client[CONFIG.db_name]
     await init_beanie(database=db, document_models=[UserInDB])
-

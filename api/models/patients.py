@@ -1,21 +1,17 @@
-from datetime import datetime, date
+from datetime import date
 
-
-from typing import List, Optional
-
-from beanie import Document, Indexed, Link, PydanticObjectId
-from api.utils.enum_types import Gender
-
+from beanie import Document, PydanticObjectId
 from pydantic import BaseModel, Field
+
+from api.utils.enum_types import Gender
 
 
 class PatientProfileIn(BaseModel):
-    gender: Gender
-    dob: date
-    contact: str
-    address: str
+    gender: Gender | None = None
+    dob: date | None = None
+    contact: str | None = None
+    address: str | None = None
 
 
 class PatientProfile(PatientProfileIn, Document):
-    # id: PydanticObjectId = Field(alias="_id")
-    pass
+    id: PydanticObjectId = Field(alias="_id")
